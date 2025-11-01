@@ -99,7 +99,7 @@ var style_dukuh_somopuro_1 = function(feature, resolution){
         variables: {}
     };
     
-    var labelText = ""; 
+    var labelText = "DK_KP"; 
     var value = feature.get("DK_KP");
     var labelFont = "13.0px \'Open Sans\', sans-serif";
     var labelFill = "#323232";
