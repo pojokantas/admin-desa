@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - Peta Administrasi</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #ffffff; /* Warna teks putih */
+            text-align: center;
+        }
+
+        .hero-section {
+            /* Slot Gambar Latar Belakang */
+            background-image: url('placeholder_image.jpg'); /* GANTI DENGAN NAMA FILE GAMBAR ANDA */
+            background-size: cover;
+            background-position: center;
+            
+            /* Overlay gelap agar teks lebih mudah dibaca */
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1; /* Pastikan konten berada di atas overlay */
+        }
+        
+        /* Overlay Transparan (agar teks lebih jelas) */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Hitam dengan opasitas 50% */
+            z-index: -1; /* Pastikan overlay berada di bawah konten */
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #ffffff;
+            /* LINK */
+            background-color: #007bff; /* Warna biru */
+            /* LINK */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3; /* Warna biru lebih gelap saat di-hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <div class="content">
+            <h1>Selamat Datang di Peta Administrasi Desa Somopuro</h1>
+            <p>
+                Akses informasi geografis yang rinci mengenai batas-batas dukuh, RT, dan RW di wilayah Desa Somopuro, Kecamatan Jogonalan.
+            </p>
+            
+            <a href="pojokantas/admin-desa/admin-desa-7aa1ef0fbffb753ed33c71ac136fdbb1eb80262b/index.html" class="cta-button">
+                Lihat Peta Interaktif
+            </a>
+            </div>
+    </div>
+
+</body>
+</html>
