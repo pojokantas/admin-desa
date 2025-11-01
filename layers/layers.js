@@ -41,7 +41,7 @@ lyr_GoogleSatellite_0.setVisible(true);lyr_dukuh_somopuro_1.setVisible(true);
 var layersList = [lyr_GoogleSatellite_0,lyr_dukuh_somopuro_1];
 lyr_dukuh_somopuro_1.set('fieldAliases', {'fid_1': 'fid_1', 'desa_kel': 'Desa', 'RT1': 'RT', 'RW1': 'RW', 'DK_KP': 'Dusun', 'WADMKC_12': 'Kecamatan', 'auxiliary_storage_labeling_show': 'auxiliary_storage_labeling_show', });
 lyr_dukuh_somopuro_1.set('fieldImages', {'fid_1': 'Range', 'desa_kel': 'TextEdit', 'RT1': 'TextEdit', 'RW1': 'TextEdit', 'DK_KP': 'TextEdit', 'WADMKC_12': 'TextEdit', 'auxiliary_storage_labeling_show': 'Hidden', });
-lyr_dukuh_somopuro_1.set('fieldLabels', {'WADMKC_12': 'inline label - visible with data', 'desa_kel': 'inline label - visible with data', 'DK_KP': 'inline label - visible with data', 'RW1': 'inline label - visible with data', 'RT1': 'inline label - visible with data', });
+lyr_dukuh_somopuro_1.set('fieldLabels', {'fid_1': 'no_label', 'WADMKC_12': 'inline label - visible with data', 'desa_kel': 'inline label - visible with data', 'DK_KP': 'inline label - visible with data', 'RW1': 'inline label - visible with data', 'RT1': 'inline label - visible with data', });
 lyr_dukuh_somopuro_1.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
