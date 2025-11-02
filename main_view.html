@@ -176,24 +176,41 @@
             return false;
         };
         
-        map.on('singleclick', function(evt) {
+map.on('singleclick', function(evt) {
             if (map.hasFeatureAtPixel(evt.pixel)) {
-                var info = [];
-                var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
-                    return feature;
+                var clickedFeature = null;
+                var clickedLayer = null;
+
+                // Tangkap Feature dan Layer yang sebenarnya diklik
+                map.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
+                    clickedFeature = feature;
+                    clickedLayer = layer;
+                    return true; // Hentikan iterasi setelah feature pertama ditemukan
                 });
-                var layer = lyr_dukuh_somopuro_1; // Asumsi hanya 1 layer interaktif
-                
-                if (feature) {
-                    var popText = '';
-                    var lookup = feature.get(layer.get('popupInfo'));
-                    popText += '<b>' + layer.get('popupInfo') + '</b>: ' + (lookup ? lookup : '');
+
+                if (clickedFeature && clickedLayer) {
+                    var layer = clickedLayer; // Gunakan layer yang terdeteksi
                     
+                    var popText = '';
+                    var lookup = clickedFeature.get(layer.get('popupInfo'));
+                    
+                    // Tambahkan Label Utama Pop-up (jika ada)
+                    if (layer.get('popupInfo') && lookup) {
+                        popText += '<b>' + layer.get('popupInfo') + '</b>: ' + lookup;
+                    }
+
+                    // Tambahkan Tabel Atribut
                     if (layer.get('fieldLabels') && layer.get('fieldImages')) {
+                        if (popText !== '') {
+                             popText += '<br>';
+                        }
                         popText += '<table border="1" style="width: 100%;"><tr><th>Attribut</th><th>Nilai</th></tr>';
+                        
                         layer.get('fieldNames').forEach(function(fieldName, index) {
-                            if (layer.get('fieldLabels')[fieldName] === 'inline label - visible with data') {
-                                popText += '<tr><td>' + layer.get('fieldAliases')[fieldName] + '</td><td>' + feature.get(fieldName) + '</td></tr>';
+                            var featureValue = clickedFeature.get(fieldName);
+                            // Tampilkan hanya atribut yang disetel 'inline label - visible with data' DAN memiliki nilai
+                            if (layer.get('fieldLabels')[fieldName] === 'inline label - visible with data' && featureValue) {
+                                popText += '<tr><td>' + layer.get('fieldAliases')[fieldName] + '</td><td>' + featureValue + '</td></tr>';
                             }
                         });
                         popText += '</table>';
